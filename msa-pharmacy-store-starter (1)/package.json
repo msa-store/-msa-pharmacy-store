@@ -1,0 +1,19 @@
+{
+  "name": "msa-pharmacy-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "متجر صيدليات محمد سعد للمستلزمات الطبية ومستحضرات التجميل والعناية الشخصية",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}

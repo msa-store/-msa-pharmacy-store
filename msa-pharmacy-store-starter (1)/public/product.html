@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تفاصيل المنتج | صيدليات محمد سعد</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>.details-wrap{max-width:1000px;margin:50px auto;padding:20px}.details{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;border:1px solid var(--line);border-radius:22px;padding:28px}.details img{width:100%;max-height:430px;object-fit:contain;background:var(--cream);border-radius:15px}.details h1{color:var(--navy)}.details p{color:var(--muted)}.details .price{font-size:25px;font-weight:800;color:var(--navy)}@media(max-width:650px){.details{grid-template-columns:1fr;padding:17px}.details-wrap{margin:20px auto}}</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="brand-mark">م</span><span><strong>صيدليات محمد سعد</strong><small>عناية تثق بها كل يوم</small></span></a><a class="cart-button" href="/">العودة للمتجر</a></header>
+<main class="details-wrap" id="content"><p>جاري تحميل تفاصيل المنتج...</p></main>
+<script>
+const fallback = [
+{id:1,name:"مجموعة كابكسي الكاملة",price:2900,image:"/images/capixy.jpg",description:"شامبو + بلسم + سيرم + ماسك",category:"العناية بالشعر"},
+{id:2,name:"واقي شمس بيوديرما",price:699,image:"/images/bioderma.jpg",description:"SPF50 حماية عالية",category:"العناية بالبشرة"},
+{id:3,name:"سيرم فيتامين سي",price:999,image:"/images/vitc.jpg",description:"تفتيح ونضارة البشرة",category:"العناية بالبشرة"}
+];
+const id = new URLSearchParams(location.search).get("id");
+const esc = s => String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+async function showProduct(){
+ let list=fallback;
+ try {const r=await fetch("/api/products");const d=await r.json();if(d.success&&Array.isArray(d.products))list=d.products.map(p=>({...p,price:Number(p.price),image:p.image_url||""}));} catch(_){}
+ const p=list.find(x=>String(x.id)===String(id));
+ const el=document.getElementById("content");
+ if(!p){el.innerHTML='<div class="details"><div><h1>المنتج غير موجود</h1><a class="primary-button" href="/">الرجوع للمتجر</a></div></div>';return;}
+ const image=p.image||"";
+ el.innerHTML=`<div class="details"><img src="${esc(image)}" alt="${esc(p.name)}" onerror="this.style.display='none'"><div><span class="eyebrow">${esc(p.category||"منتج")}</span><h1>${esc(p.name)}</h1><p>${esc(p.description||"")}</p><div class="price">${Number(p.price||p.newPrice||0).toLocaleString("ar-EG")} جنيه</div><p>لطلب المنتج أو التأكد من توافره، تواصل معنا عبر واتساب.</p><a class="primary-button" target="_blank" rel="noopener" href="https://wa.me/201010031279?text=${encodeURIComponent("أرغب في طلب "+p.name)}">اطلب عبر واتساب ↗</a></div></div>`;
+}
+showProduct();
+</script>
+</body>
+</html>

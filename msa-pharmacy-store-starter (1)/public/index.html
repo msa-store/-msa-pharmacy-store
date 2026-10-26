@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="متجر صيدليات محمد سعد للمستلزمات الطبية ومستحضرات التجميل والعناية الشخصية.">
+  <title>صيدليات محمد سعد | المتجر</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="صيدليات محمد سعد - الرئيسية">
+    <span class="brand-mark">م</span>
+    <span><strong>صيدليات محمد سعد</strong><small>عناية تثق بها كل يوم</small></span>
+  </a>
+  <button class="menu-button" id="menuButton" aria-label="فتح القائمة">☰</button>
+  <nav id="mainNav">
+    <a href="#products">المنتجات</a>
+    <a href="#offers">العروض</a>
+    <a href="#about">عن الصيدليات</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+  <button class="cart-button" id="openCart">السلة <span id="cartCount">0</span></button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">اختياراتك اليومية في مكان واحد</span>
+      <h1>اهتم بنفسك،<br><em>واختار الأفضل ليك.</em></h1>
+      <p>مستلزمات طبية، عناية بالبشرة والشعر، ومستحضرات تجميل مختارة بعناية.</p>
+      <a class="primary-button" href="#products">تسوّق المنتجات <span>←</span></a>
+      <div class="trust-row"><span>✓ منتجات عناية</span><span>✓ طلب سهل عبر واتساب</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-circle"></div><div class="art-card art-card-one">✦<small>عناية يومية</small></div>
+      <div class="art-card art-card-two">+</div><div class="art-bottle"></div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div><span class="benefit-icon">♡</span><p><strong>اختيارات بعناية</strong><small>منتجات للعناية اليومية</small></p></div>
+    <div><span class="benefit-icon">⌁</span><p><strong>طلب سهل</strong><small>تواصل مباشر عبر واتساب</small></p></div>
+    <div><span class="benefit-icon">✧</span><p><strong>عروض متجددة</strong><small>تابع أحدث المنتجات</small></p></div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-heading"><div><span class="eyebrow">تصفّح المتجر</span><h2>منتجات مختارة ليك</h2></div><span class="result-count" id="resultCount"></span></div>
+    <div class="filters">
+      <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="دور على منتج..." aria-label="البحث عن منتج"></label>
+      <div class="category-list" id="categoryList">
+        <button class="category active" data-category="الكل">الكل</button>
+        <button class="category" data-category="العناية بالشعر">العناية بالشعر</button>
+        <button class="category" data-category="العناية بالبشرة">العناية بالبشرة</button>
+        <button class="category" data-category="مستلزمات طبية">مستلزمات طبية</button>
+        <button class="category" data-category="العروض">العروض</button>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"><div class="loading">بنجهّز المنتجات...</div></div>
+    <p class="notice" id="dataNotice"></p>
+  </section>
+
+  <section class="offer-banner" id="offers">
+    <div><span class="eyebrow">خليك متابع</span><h2>عروض جديدة في الطريق</h2><p>تابع قناة عروض صيدليات محمد سعد على واتساب لمعرفة أحدث العروض.</p></div>
+    <a class="light-button" id="channelLink" href="https://wa.me/201010031279" target="_blank" rel="noopener">تواصل معنا على واتساب ↗</a>
+  </section>
+
+  <section class="about section" id="about"><span class="eyebrow">عن صيدلياتنا</span><h2>العناية الصح تبدأ باختيار صح</h2><p>متجر صيدليات محمد سعد للمستلزمات الطبية ومستحضرات التجميل والعناية الشخصية. اختار منتجاتك وابعت طلبك بسهولة.</p></section>
+</main>
+
+<footer id="contact"><div class="footer-brand"><span class="brand-mark">م</span><strong>صيدليات محمد سعد</strong></div><p>للاستفسارات والطلبات تواصل معنا عبر واتساب.</p><div class="branches"><span>الفرع الأول: بجوار مدرسة أشرف جاويش</span><span>الفرع الثاني: بجوار قاعة الفور سيزون</span></div><small>© <span id="year"></span> صيدليات محمد سعد — جميع الحقوق محفوظة</small></footer>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="سلة المشتريات" aria-hidden="true">
+  <div class="drawer-heading"><h2>سلة مشترياتك</h2><button id="closeCart" class="icon-button" aria-label="إغلاق">×</button></div>
+  <div id="cartItems" class="cart-items"><p class="empty-cart">لسه ما ضفتش منتجات للسلة.</p></div>
+  <div class="cart-total"><span>الإجمالي</span><strong id="cartTotal">0 جنيه</strong></div>
+  <form id="checkoutForm" class="checkout-form">
+    <label>الاسم<input name="name" required maxlength="120" placeholder="اسمك بالكامل"></label>
+    <label>رقم الموبايل<input name="phone" required inputmode="tel" maxlength="25" placeholder="رقم للتواصل"></label>
+    <label>العنوان<input name="address" required maxlength="500" placeholder="عنوان التوصيل"></label>
+    <button class="primary-button full-width" type="submit">إرسال الطلب عبر واتساب</button>
+    <small>لن يتم إرسال الطلب إلا بعد فتح واتساب وتأكيد الرسالة.</small>
+  </form>
+</aside>
+<script src="/js/app.js"></script>
+</body>
+</html>
